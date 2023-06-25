@@ -39,43 +39,53 @@ def bot_talk():
     if 'message' in data and data['message'] is not None:
         message = data['message'] 
         if message is not None:
-            return jsonify({
+            response = jsonify({
                 "Response": str(Bot_Chat(message)) ,
                 "Status": 'Success',
                 "ResultCode": '0',
                 "RowVersion": datetime.now()
-             }), 200
+             })
+            response.headers.add('Access-Control-Allow-Origin', 'localhost:3000')
+            return response, 200
         else:
-            return jsonify({
+            response = jsonify({
                 "Response": 'The message is missing' ,
                 "Status": 'Failed',
                 "ResultCode": '1',
                 "RowVersion": datetime.now()
-                }), 300
+             })
+            response.headers.add('Access-Control-Allow-Origin', 'localhost:3000')
+            return response, 300
     elif 'train_bot' in data and data['train_bot'] is not None:
         train_bot = data['train_bot']
         if train_bot == 'True':
             Bot_Train()
-            return jsonify({
+            response = jsonify({
                 "Response": 'Bot have trained Succesfully',
                 "Status": 'Success',
                 "ResultCode": '0',
                 "RowVersion": datetime.now()
-                }), 200
+                })
+            response.headers.add('Access-Control-Allow-Origin', 'localhost:3000')
+            return response, 200
         else:
-            return jsonify({
+            response = jsonify({
                 "Response": 'Bot have not trained',
                 "Status": 'Failed',
                 "ResultCode": '1',
                 "RowVersion": datetime.now()
-                }), 300
+                })
+            response.headers.add('Access-Control-Allow-Origin', 'localhost:3000')
+            return response, 300
     else:
-        return jsonify({
+        response = jsonify({
                 "Response": 'Body is empty',
                 "Status": 'Failed',
                 "ResultCode": '1',
                 "RowVersion": datetime.now()
-                }), 300
+                })
+            response.headers.add('Access-Control-Allow-Origin', 'localhost:3000')
+            return response, 300
 
 
 
