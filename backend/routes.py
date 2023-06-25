@@ -84,8 +84,8 @@ def bot_talk():
                 "ResultCode": '1',
                 "RowVersion": datetime.now()
                 })
-            response.headers.add('Access-Control-Allow-Origin', 'localhost:3000')
-            return response, 300
+        response.headers.add('Access-Control-Allow-Origin', 'localhost:3000')
+        return response, 300
 
 
 
