@@ -45,8 +45,8 @@ def bot_talk():
                 "ResultCode": '0',
                 "RowVersion": datetime.now()
              })
-            response.headers.add('Access-Control-Allow-Origin', '*')
-            # response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
+            response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+            response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
             return response, 200
         else:
             response = jsonify({
@@ -55,8 +55,8 @@ def bot_talk():
                 "ResultCode": '1',
                 "RowVersion": datetime.now()
              })
-            response.headers.add('Access-Control-Allow-Origin', '*')
-            # response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
+            response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+            response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
             return response, 300
     elif 'train_bot' in data and data['train_bot'] is not None:
         train_bot = data['train_bot']
@@ -68,8 +68,8 @@ def bot_talk():
                 "ResultCode": '0',
                 "RowVersion": datetime.now()
                 })
-            response.headers.add('Access-Control-Allow-Origin', '*')
-            # response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
+            response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+            response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
             return response, 200
         else:
             response = jsonify({
@@ -78,8 +78,8 @@ def bot_talk():
                 "ResultCode": '1',
                 "RowVersion": datetime.now()
                 })
-            response.headers.add('Access-Control-Allow-Origin', '*')
-            # response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
+            response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+            response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
             return response, 300
     else:
         response = jsonify({
@@ -88,8 +88,8 @@ def bot_talk():
                 "ResultCode": '1',
                 "RowVersion": datetime.now()
                 })
-        response.headers.add('Access-Control-Allow-Origin', '*')
-        # response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
         return response, 300
 
 
@@ -103,22 +103,31 @@ def bot_train():
         response = data['response'] 
         if message is not None:
             Bot_Train_Specific(message , response)
-            return jsonify({
+            response = jsonify({
                 "Response": 'Bot have trained Succesfully',
                 "Status": 'Success',
                 "ResultCode": '0',
                 "RowVersion": datetime.now()
-                }), 200
+                })
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
+        return response, 200
         else:
-            return jsonify({
+            response = jsonify({
                 "Response": 'The message is missing',
                 "Status": 'Failed',
                 "ResultCode": '1',
-                "RowVersion": datetime.now()}), 300
+                "RowVersion": datetime.now()})
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
+        return response, 300
     
     else:
-        return jsonify({
+        response = jsonify({
                 "Response": 'Body is Invalid',
                 "Status": 'Failed',
                 "ResultCode": '1',
-                "RowVersion": datetime.now()}), 300
+                "RowVersion": datetime.now()})
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
+        return response, 300
