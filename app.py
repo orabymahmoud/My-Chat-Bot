@@ -1,7 +1,6 @@
 from backend import app
 from flask_cors import CORS
-CORS(app, resources={r"/*": {"origins": "*",
-        "methods": ["GET", "POST", "DELETE", "PUT"]}})
+CORS(app, resources={r"/chatBot": {"origins": ["http://localhost:3000", "https://asstoken2.github.io"]}}, supports_credentials=True)
 # if __name__ == "__main__":
 #     app.run(host='0.0.0.0', debug=True)
 if __name__ == '__main__':  # Script executed directly?
