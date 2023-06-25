@@ -45,7 +45,8 @@ def bot_talk():
                 "ResultCode": '0',
                 "RowVersion": datetime.now()
              })
-            response.headers.add('Access-Control-Allow-Origin', 'localhost:3000')
+            response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+            response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
             return response, 200
         else:
             response = jsonify({
@@ -54,7 +55,8 @@ def bot_talk():
                 "ResultCode": '1',
                 "RowVersion": datetime.now()
              })
-            response.headers.add('Access-Control-Allow-Origin', 'localhost:3000')
+            response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+            response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
             return response, 300
     elif 'train_bot' in data and data['train_bot'] is not None:
         train_bot = data['train_bot']
@@ -66,7 +68,8 @@ def bot_talk():
                 "ResultCode": '0',
                 "RowVersion": datetime.now()
                 })
-            response.headers.add('Access-Control-Allow-Origin', 'localhost:3000')
+            response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+            response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
             return response, 200
         else:
             response = jsonify({
@@ -75,7 +78,8 @@ def bot_talk():
                 "ResultCode": '1',
                 "RowVersion": datetime.now()
                 })
-            response.headers.add('Access-Control-Allow-Origin', 'localhost:3000')
+            response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+            response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
             return response, 300
     else:
         response = jsonify({
@@ -84,7 +88,8 @@ def bot_talk():
                 "ResultCode": '1',
                 "RowVersion": datetime.now()
                 })
-        response.headers.add('Access-Control-Allow-Origin', 'localhost:3000')
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
         return response, 300
 
 
