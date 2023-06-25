@@ -30,10 +30,18 @@ def parse_json(data):
 def health():
     return {"status":"OK"}, 200
 
-
+@app.route("/chatBot")
+def bot_welcom():
+    response = jsonify({
+        "Response": str(Bot_Chat('Hello')) ,
+        "Status": 'Success',
+        "ResultCode": '0',
+        "RowVersion": datetime.now()
+        })
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response, 200
 
 @app.route("/chatBot" , methods = ["POST"])
-# @cross_origin(origin='localhost:3000',headers=['Content- Type','Authorization'])
 def bot_talk():
     data = request.get_json()
     if 'message' in data and data['message'] is not None:
@@ -95,7 +103,6 @@ def bot_talk():
 
 
 @app.route("/TrainBot" , methods = ["POST"])
-# @cross_origin(origin='localhost:3000',headers=['Content- Type','Authorization'])
 def bot_train():
     data = request.get_json()
     if 'message' in data and data['message'] is not None and 'response' in data and data['response'] is not None:
