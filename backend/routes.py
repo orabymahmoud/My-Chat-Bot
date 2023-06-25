@@ -109,8 +109,8 @@ def bot_train():
                 "ResultCode": '0',
                 "RowVersion": datetime.now()
                 })
-        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
-        response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
+            response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+            response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
         return response, 200
         else:
             response = jsonify({
@@ -118,10 +118,9 @@ def bot_train():
                 "Status": 'Failed',
                 "ResultCode": '1',
                 "RowVersion": datetime.now()})
-        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
-        response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
-        return response, 300
-    
+            response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+            response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
+            return response, 300
     else:
         response = jsonify({
                 "Response": 'Body is Invalid',
