@@ -111,7 +111,7 @@ def bot_train():
                 })
             response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
             response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
-        return response, 200
+            return response, 200
         else:
             response = jsonify({
                 "Response": 'The message is missing',
