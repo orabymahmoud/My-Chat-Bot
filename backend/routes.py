@@ -38,7 +38,7 @@ def bot_welcom():
         "ResultCode": '0',
         "RowVersion": datetime.now()
         })
-    response.headers.add('Access-Control-Allow-Origin', ["https://asstoken2.github.io", "http://localhost:3000"])
+    response.headers.add('Access-Control-Allow-Origin', request.headers.get('Origin'))
     return response, 200
 
 @app.route("/chatBot" , methods = ["POST"])
@@ -53,7 +53,7 @@ def bot_talk():
                 "ResultCode": '0',
                 "RowVersion": datetime.now()
              })
-            response.headers.add('Access-Control-Allow-Origin', ["https://asstoken2.github.io", "http://localhost:3000"])
+            response.headers.add('Access-Control-Allow-Origin', request.headers.get('Origin'))
             # response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
             return response, 200
         else:
@@ -63,7 +63,7 @@ def bot_talk():
                 "ResultCode": '1',
                 "RowVersion": datetime.now()
              })
-            response.headers.add('Access-Control-Allow-Origin', ["https://asstoken2.github.io", "http://localhost:3000"])
+            response.headers.add('Access-Control-Allow-Origin', request.headers.get('Origin'))
             # response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
             return response, 300
     elif 'train_bot' in data and data['train_bot'] is not None:
@@ -76,7 +76,7 @@ def bot_talk():
                 "ResultCode": '0',
                 "RowVersion": datetime.now()
                 })
-            response.headers.add('Access-Control-Allow-Origin', ["https://asstoken2.github.io", "http://localhost:3000"])
+            response.headers.add('Access-Control-Allow-Origin', request.headers.get('Origin'))
             # response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
             return response, 200
         else:
@@ -86,7 +86,7 @@ def bot_talk():
                 "ResultCode": '1',
                 "RowVersion": datetime.now()
                 })
-            response.headers.add('Access-Control-Allow-Origin', ["https://asstoken2.github.io", "http://localhost:3000"])
+            response.headers.add('Access-Control-Allow-Origin', request.headers.get('Origin'))
             # response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
             return response, 300
     else:
@@ -96,7 +96,7 @@ def bot_talk():
                 "ResultCode": '1',
                 "RowVersion": datetime.now()
                 })
-        response.headers.add('Access-Control-Allow-Origin', ["https://asstoken2.github.io", "http://localhost:3000"])
+        response.headers.add('Access-Control-Allow-Origin', request.headers.get('Origin'))
         # response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
         return response, 300
 
@@ -116,7 +116,7 @@ def bot_train():
                 "ResultCode": '0',
                 "RowVersion": datetime.now()
                 })
-            response.headers.add('Access-Control-Allow-Origin', ["https://asstoken2.github.io", "http://localhost:3000"])
+            response.headers.add('Access-Control-Allow-Origin', request.headers.get('Origin'))
             # response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
             return response, 200
         else:
@@ -125,7 +125,7 @@ def bot_train():
                 "Status": 'Failed',
                 "ResultCode": '1',
                 "RowVersion": datetime.now()})
-            response.headers.add('Access-Control-Allow-Origin', ["https://asstoken2.github.io", "http://localhost:3000"])
+            response.headers.add('Access-Control-Allow-Origin', request.headers.get('Origin'))
             # response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
             return response, 300
     else:
@@ -134,6 +134,6 @@ def bot_train():
                 "Status": 'Failed',
                 "ResultCode": '1',
                 "RowVersion": datetime.now()})
-        response.headers.add('Access-Control-Allow-Origin', ["https://asstoken2.github.io", "http://localhost:3000"])
+        response.headers.add('Access-Control-Allow-Origin', request.headers.get('Origin'))
         # response.headers.add('Access-Control-Allow-Origin', 'https://asstoken2.github.io')
         return response, 300
