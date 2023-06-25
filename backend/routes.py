@@ -33,6 +33,7 @@ def health():
 
 
 @app.route("/chatBot" , methods = ["POST"])
+@cross_origin(origin='localhost:3000',headers=['Content- Type','Authorization'])
 def bot_talk():
     data = request.get_json()
     if 'message' in data and data['message'] is not None:
@@ -79,6 +80,7 @@ def bot_talk():
 
 
 @app.route("/TrainBot" , methods = ["POST"])
+@cross_origin(origin='localhost:3000',headers=['Content- Type','Authorization'])
 def bot_train():
     data = request.get_json()
     if 'message' in data and data['message'] is not None and 'response' in data and data['response'] is not None:
