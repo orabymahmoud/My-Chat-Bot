@@ -38,43 +38,43 @@ def bot_talk():
     if 'message' in data and data['message'] is not None:
         message = data['message'] 
         if message is not None:
-            return {
+            return jsonify({
                 "Response": str(Bot_Chat(message)) ,
                 "Status": 'Success',
                 "ResultCode": '0',
                 "RowVersion": datetime.now()
-             }, 200
+             }), 200
         else:
-            return {
+            return jsonify({
                 "Response": 'The message is missing' ,
                 "Status": 'Failed',
                 "ResultCode": '1',
                 "RowVersion": datetime.now()
-                }, 300
+                }), 300
     elif 'train_bot' in data and data['train_bot'] is not None:
         train_bot = data['train_bot']
         if train_bot == 'True':
             Bot_Train()
-            return {
+            return jsonify({
                 "Response": 'Bot have trained Succesfully',
                 "Status": 'Success',
                 "ResultCode": '0',
                 "RowVersion": datetime.now()
-                }, 200
+                }), 200
         else:
-            return {
+            return jsonify({
                 "Response": 'Bot have not trained',
                 "Status": 'Failed',
                 "ResultCode": '1',
                 "RowVersion": datetime.now()
-                }, 300
+                }), 300
     else:
-        return {
+        return jsonify({
                 "Response": 'Body is empty',
                 "Status": 'Failed',
                 "ResultCode": '1',
                 "RowVersion": datetime.now()
-                }, 300
+                }), 300
 
 
 
@@ -86,22 +86,22 @@ def bot_train():
         response = data['response'] 
         if message is not None:
             Bot_Train_Specific(message , response)
-            return {
+            return jsonify({
                 "Response": 'Bot have trained Succesfully',
                 "Status": 'Success',
                 "ResultCode": '0',
                 "RowVersion": datetime.now()
-                }, 200
+                }), 200
         else:
-            return {
+            return jsonify({
                 "Response": 'The message is missing',
                 "Status": 'Failed',
                 "ResultCode": '1',
-                "RowVersion": datetime.now()}, 300
+                "RowVersion": datetime.now()}), 300
     
     else:
-        return {
+        return jsonify({
                 "Response": 'Body is Invalid',
                 "Status": 'Failed',
                 "ResultCode": '1',
-                "RowVersion": datetime.now()}, 300
+                "RowVersion": datetime.now()}), 300
